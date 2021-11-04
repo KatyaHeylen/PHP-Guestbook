@@ -16,7 +16,8 @@ class PostLoader
     public function putPostToFile()
     {
         if (isset($_POST['title']) && isset($_POST['message']) && isset($_POST['name'])) {
-            $data = $_POST['title'] . ": " . $_POST['message'] . " Author: " . $_POST['name'] . " " . "Date: " . date("Y-m-d H:i:s") . " ";
+            $data = [];
+            $data["title"] = $_POST['title'];
             $entries[] = json_decode(file_get_contents("msgs.json"));
             array_unshift($entries, $data);
             file_put_contents("msgs.json", json_encode($entries));
@@ -27,7 +28,7 @@ class PostLoader
     {
         $stringOfPosts = file_get_contents('./msgs.json');
         $arrayOfPosts = json_decode($stringOfPosts, true);
-        var_dump($arrayOfPosts);
+        var_dump($arrayOfPosts[0]);
 //        foreach ($arrayOfPosts AS $ofPost) {
 //            echo $ofPost . "<br>";
 //        }
