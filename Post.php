@@ -4,21 +4,15 @@ class Post
 {
     private $title;
     private $message;
-    private $clientName;
+    private $name;
     private $date;
 
     /**
-     * @param $title
-     * @param $clientName
-     * @param $message
      * @param $date
      */
-    public function __construct(array $title, $clientName, $message, $date)
+    public function __construct()
     {
-        $this->title = $title;
-        $this->clientName = $clientName;
-        $this->message = $message;
-        $this->date = date('d-m-y h:i:s');
+        $this->date = new DateTime();
     }
 
     /**
@@ -30,19 +24,11 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @param mixed $title
      */
-    public function getDate()
+    public function setTitle($title)
     {
-        return $this->date;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getClientName()
-    {
-        return $this->clientName;
+        $this->title = $title;
     }
 
     /**
@@ -53,6 +39,36 @@ class Post
         return $this->message;
     }
 
+    /**
+     * @param mixed $message
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getDate(): DateTime
+    {
+        return $this->date;
+    }
 
 }
